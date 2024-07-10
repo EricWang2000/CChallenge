@@ -1,0 +1,33 @@
+<div class="container mx-auto p-4">
+    <div class="mb-4">
+      <label for="firstNumber" class="block text-sm font-medium text-gray-700">First Number</label>
+      <input id="firstNumber" type="number" class="mt-1 p-2 block w-full border border-gray-300 rounded-md" (change)="onFirstNumberChange($event)">
+    </div>
+  
+    <div class="mb-4">
+      <label for="secondNumber" class="block text-sm font-medium text-gray-700">Second Number</label>
+      <input id="secondNumber" type="number" class="mt-1 p-2 block w-full border border-gray-300 rounded-md" (change)="onSecondNumberChange($event)">
+    </div>
+  
+    <div class="mb-4">
+      <label for="operation" class="block text-sm font-medium text-gray-700">Operation</label>
+      <select id="operation" class="mt-1 p-2 block w-full border border-gray-300 rounded-md" (change)="onOperationChange($event)" [disabled]="operations.length === 0">
+        <option value="">Select Operation</option>
+        <option *ngFor="let op of operations" [value]="op">{{ op }}</option>
+      </select>
+    </div>
+  
+    <div class="mb-4">
+      <button class="mt-1 p-2 block w-full bg-red-500 text-white rounded-md" (click)="clear()">Clear</button>
+    </div>
+  
+    <div *ngIf="result !== null" class="mb-4">
+      <label class="block text-sm font-medium text-gray-700">Result</label>
+      <div class="mt-1 p-2 block w-full border border-gray-300 rounded-md">{{ result }}</div>
+    </div>
+  
+    <div *ngIf="errorMessage" class="mb-4 text-red-500">
+      {{ errorMessage }}
+    </div>
+  </div>
+  
