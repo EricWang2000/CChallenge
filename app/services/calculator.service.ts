@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CalculatorService {
-  private apiUrl = 'https://localhost:5001/api/Calculator';  // Adjust the URL as necessary
+  private apiUrl = 'https://localhost:5001/api/Calculator';
 
   constructor(private http: HttpClient) {}
 

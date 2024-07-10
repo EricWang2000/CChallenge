@@ -3,13 +3,13 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { CalculatorComponent } from './components/calculator/calculator.component'; // Import CalculatorComponent
+import { CalculatorComponent } from './components/calculator/calculator.component';
 import { CalculatorService } from './services/calculator.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CalculatorComponent // Declare CalculatorComponent
+    CalculatorComponent
   ],
   imports: [
     BrowserModule,
