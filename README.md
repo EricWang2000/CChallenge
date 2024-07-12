@@ -1,5 +1,7 @@
 # CodingChallenge
 
+Make sure node.js, .NET, and angular cli are installed before using.
+
 These are all the files I worked on, and should run on Angular 18 completely updated with no module files as 17+ deemed those mostly obsolete.
 
 The angular code I edited is all in the CalculatorApp folder, where you can just npm install with Angular 18, then ng serve.
