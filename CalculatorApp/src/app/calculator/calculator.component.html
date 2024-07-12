@@ -1,22 +1,20 @@
+<!-- src/app/calculator/calculator.component.html -->
 <div>
-    <label>First Number:</label>
-    <input type="number" [(ngModel)]="firstNumber" (change)="onFirstNumberChange()" />
-  </div>
-  <div>
-    <label>Second Number:</label>
-    <input type="number" [(ngModel)]="secondNumber" (change)="onSecondNumberChange()" />
-  </div>
-  <div>
-    <label>Select Operation:</label>
-    <select [(ngModel)]="operation" (change)="onOperationChange()">
+    <label for="firstNumber">First Number:</label>
+    <input id="firstNumber" type="number" [(ngModel)]="firstNumber" (input)="onFirstNumberChange()">
+  
+    <label for="secondNumber">Second Number:</label>
+    <input id="secondNumber" type="number" [(ngModel)]="secondNumber" (input)="onSecondNumberChange()">
+  
+    <label for="operation">Operation:</label>
+    <select id="operation" [(ngModel)]="operation" (change)="onOperationChange()">
       <option *ngFor="let op of operations" [value]="op">{{ op }}</option>
     </select>
-  </div>
-  <div>
+  
+    <button (click)="calculate()">Calculate</button>
     <button (click)="clear()">Clear</button>
-  </div>
-  <div>
-    <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
-    <p *ngIf="result !== null">Result: {{ result | number:'1.4-4' }}</p>
+  
+    <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+    <div *ngIf="result !== null">Result: {{ result }}</div>
   </div>
   

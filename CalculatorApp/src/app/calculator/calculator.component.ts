@@ -1,3 +1,4 @@
+// src/app/calculator/calculator.component.ts
 import { Component, OnInit } from '@angular/core';
 import { CalculatorService } from './../calculator.service';
 import { FormsModule } from '@angular/forms';
@@ -45,22 +46,37 @@ export class CalculatorComponent implements OnInit {
   }
 
   calculate(): void {
-    if (!this.operation || isNaN(this.firstNumber) || isNaN(this.secondNumber)) {
-      this.result = null;
-      this.errorMessage = 'Please enter valid numbers and select an operation.';
-      return;
-    }
+    const location = 'default'; // Replace with actual location logic if needed
 
-    this.calculatorService.performOperation(this.firstNumber, this.secondNumber, this.operation)
-      .subscribe(
-        result => {
-          this.result = result;
-          this.errorMessage = '';
-        },
-        error => {
-          this.result = null;
-          this.errorMessage = 'Error occurred while performing operation.';
-        }
-      );
+    this.calculatorService.setFirstNumber(location, this.firstNumber).subscribe({
+      next: () => {
+        this.calculatorService.setSecondNumber(location, this.secondNumber).subscribe({
+          next: () => {
+            if (!this.operation) {
+              this.errorMessage = 'Please select an operation.';
+              this.result = null;
+              return;
+            }
+
+            this.calculatorService.performOperation(location, this.operation).subscribe({
+              next: (res) => {
+                this.result = res;
+                this.errorMessage = '';
+              },
+              error: () => {
+                this.result = null;
+                this.errorMessage = 'Error occurred while performing operation.';
+              }
+            });
+          },
+          error: () => {
+            this.errorMessage = 'Error setting second number.';
+          }
+        });
+      },
+      error: () => {
+        this.errorMessage = 'Error setting first number.';
+      }
+    });
   }
 }
