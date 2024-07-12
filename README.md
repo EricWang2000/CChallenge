@@ -13,6 +13,6 @@ just make sure you dotnet run on CalculatorAPI, and then in a separate terminal 
 
 My decisions for the C# code were as follows, I defined the functions I wanted in the interface code, and then the implementations are in the implementation folder, where the code goes from something abstract to something actually tangible. Obviously the Controller is there to handle any requests from the user and play out these functions in real time.
 
-For the Angular code, I simply wanted a straightforward calculator design, completely basic functionality with minimal CSS, with functional buttons to do the proper arithmetic.
+For the Angular code, I simply wanted a straightforward calculator design, completely basic functionality with some nicely formatted CSS and functional buttons to do the proper arithmetic.
 
 I suppose if I were to improve on my current calculator, I could add fraction arithmetic to the calculator, it would just involve some tweaking of the multiply functions, calculating a common multiple of the denominator function, and storing numbers as temporary variables in the arithmetic functions so that there can be a numerator and denominator in the output.
