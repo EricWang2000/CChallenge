@@ -53,5 +53,9 @@ namespace CalculatorAPI.Controllers
     public class DoMathRequest
     {
         public string Operation { get; set; }
+        public DoMathRequest(string operation)
+        {
+            Operation = operation ?? throw new ArgumentNullException(nameof(operation));
+        }
     }
 }
