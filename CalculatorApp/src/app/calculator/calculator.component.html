@@ -1,20 +1,26 @@
-<!-- src/app/calculator/calculator.component.html -->
-<div>
-    <label for="firstNumber">First Number:</label>
-    <input id="firstNumber" type="number" [(ngModel)]="firstNumber" (input)="onFirstNumberChange()">
+<div class="calculator-container">
+    <div class="input-group">
+        <label for="firstNumber">First Number:</label>
+        <input id="firstNumber" type="number" [(ngModel)]="firstNumber" (input)="onFirstNumberChange()">
+    </div>
   
-    <label for="secondNumber">Second Number:</label>
-    <input id="secondNumber" type="number" [(ngModel)]="secondNumber" (input)="onSecondNumberChange()">
+    <div class="input-group">
+        <label for="secondNumber">Second Number:</label>
+        <input id="secondNumber" type="number" [(ngModel)]="secondNumber" (input)="onSecondNumberChange()">
+    </div>
   
-    <label for="operation">Operation:</label>
-    <select id="operation" [(ngModel)]="operation" (change)="onOperationChange()">
-      <option *ngFor="let op of operations" [value]="op">{{ op }}</option>
-    </select>
+    <div class="input-group">
+        <label for="operation">Operation:</label>
+        <select id="operation" [(ngModel)]="operation" (change)="onOperationChange()">
+            <option *ngFor="let op of operations" [value]="op">{{ op }}</option>
+        </select>
+    </div>
   
-    <button (click)="calculate()">Calculate</button>
-    <button (click)="clear()">Clear</button>
+    <div class="button-group">
+        <button class="calculate-btn" (click)="calculate()">Calculate</button>
+        <button class="clear-btn" (click)="clear()">Clear</button>
+    </div>
   
-    <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
-    <div *ngIf="result !== null">Result: {{ result }}</div>
-  </div>
-  
+    <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+    <div *ngIf="result !== null" class="result">Result: {{ result }}</div>
+</div>
