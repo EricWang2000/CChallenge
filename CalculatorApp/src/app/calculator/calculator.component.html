@@ -1,0 +1,22 @@
+<div>
+    <label>First Number:</label>
+    <input type="number" [(ngModel)]="firstNumber" (change)="onFirstNumberChange()" />
+  </div>
+  <div>
+    <label>Second Number:</label>
+    <input type="number" [(ngModel)]="secondNumber" (change)="onSecondNumberChange()" />
+  </div>
+  <div>
+    <label>Select Operation:</label>
+    <select [(ngModel)]="operation" (change)="onOperationChange()">
+      <option *ngFor="let op of operations" [value]="op">{{ op }}</option>
+    </select>
+  </div>
+  <div>
+    <button (click)="clear()">Clear</button>
+  </div>
+  <div>
+    <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+    <p *ngIf="result !== null">Result: {{ result | number:'1.4-4' }}</p>
+  </div>
+  
