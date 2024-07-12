@@ -19,9 +19,15 @@ namespace CalculatorAPI
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAllOrigins",
+                builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+            });
             services.AddControllers();
             services.AddSingleton<INumberStore, NumberStore>();
             services.AddSingleton<ICalculator, Calculator>();
+
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -30,6 +36,8 @@ namespace CalculatorAPI
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors("AllowAllOrigins");
 
             app.UseRouting();
 

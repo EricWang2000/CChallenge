@@ -18,23 +18,23 @@ namespace CalculatorAPI.Controllers
         }
 
         [HttpPost("SetFirstNumber")]
-        public ActionResult<List<string>> SetFirstNumber([FromQuery] string location, [FromBody] double number)
+        public ActionResult<List<string>> SetFirstNumber([FromQuery] string location, [FromBody] SetNumberRequest request)
         {
-            _numberStore.StoreNumber(location, 1, number);
+            _numberStore.StoreNumber(location, 1, request.Number);
             return Ok(_calculator.ListAvailableOperations(location));
         }
 
         [HttpPost("SetSecondNumber")]
-        public ActionResult<List<string>> SetSecondNumber([FromQuery] string location, [FromBody] double number)
+        public ActionResult<List<string>> SetSecondNumber([FromQuery] string location, [FromBody] SetNumberRequest request)
         {
-            _numberStore.StoreNumber(location, 2, number);
+            _numberStore.StoreNumber(location, 2, request.Number);
             return Ok(_calculator.ListAvailableOperations(location));
         }
 
         [HttpPost("DoMath")]
-        public ActionResult<double> DoMath([FromQuery] string location, [FromBody] string operation)
+        public ActionResult<double> DoMath([FromQuery] string location, [FromBody] DoMathRequest request)
         {
-            return Ok(_calculator.PerformCalculation(location, operation));
+            return Ok(_calculator.PerformCalculation(location, request.Operation));
         }
 
         [HttpDelete("ClearNumbers")]
@@ -43,5 +43,15 @@ namespace CalculatorAPI.Controllers
             _numberStore.ClearNumbers(location);
             return NoContent();
         }
+    }
+
+    public class SetNumberRequest
+    {
+        public double Number { get; set; }
+    }
+
+    public class DoMathRequest
+    {
+        public string Operation { get; set; }
     }
 }
